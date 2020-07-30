@@ -20,5 +20,6 @@ and many more...
 <p>Note: You need to edit the camera.py file to change the harcascade library<br/><img src="https://github.com/hprabesh/deviceMonitor/blob/master/2.png" alt="Change Harcascade Location"/></p> 
 
 
+Thank you for using the program
 
 
