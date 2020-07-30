@@ -19,11 +19,11 @@ class Camera(BaseCamera):
     def frames():
         camera = cv2.VideoCapture(Camera.video_source)
         if not camera.isOpened():
-            raise RuntimeError('Could not start camera.')
+            raise RuntimeError('Camera NotFound')
         face_cascade=cv2.CascadeClassifier("C:\\ProgramData\\Anaconda3\\Lib\\site-packages\\cv2\data\\haarcascade_frontalface_default.xml")
         eye_cascade=cv2.CascadeClassifier("C:\\ProgramData\\Anaconda3\\Lib\\site-packages\\cv2\\data\\haarcascade_eye_tree_eyeglasses.xml")
         while True:
-            # read current frame
+            # read frame by frame
             _, img = camera.read()
             img=cv2.resize(img,(int(img.shape[1]),int(img.shape[0])))
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -37,5 +37,5 @@ class Camera(BaseCamera):
                     cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(255,0,0),3)
             resized=cv2.resize(img,(int(img.shape[1]/2),int(img.shape[0]/2)))
             cv2.imshow('img', resized)
-            # encode as a jpeg image and return it
+            #convert to jpg image file 
             yield cv2.imencode('.jpg', img)[1].tobytes()
